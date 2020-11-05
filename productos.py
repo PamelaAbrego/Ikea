@@ -14,7 +14,7 @@ def getAllProductos():
     result = {}
     try:
         with connection.cursor() as cursor:
-            sql = "SELECT * FROM ikea.productos;"
+            sql = "SELECT productos.idProductos, productos.nombre, productos.precio, productos.dimensiones, productos.materiales, productos.coloresDisponibles, productos.descripcion, productos.garantia, claseproductos.idClaseProductos ,claseproductos.nombre as nombreClaseProductos FROM ikea.productos inner join ikea.claseproductos on productos.idClaseProductos = claseproductos.idClaseProductos;"
             cursor.execute(sql)
             result = cursor.fetchall()
     finally:
@@ -29,6 +29,7 @@ def getAllProductos():
             "descripcion",
             "garantia",
             "idClaseProductos",
+            "nombreClaseProductos",
         ]
         for producto in result:
             table.add_row(
@@ -42,6 +43,7 @@ def getAllProductos():
                     producto["descripcion"],
                     producto["garantia"],
                     producto["idClaseProductos"],
+                    producto["nombreClaseProductos"],
                 ]
             )
         print(table)
@@ -231,3 +233,6 @@ def updateProducto():
 
     finally:
         pass
+
+
+deleteProducto()
