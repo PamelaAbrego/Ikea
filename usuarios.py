@@ -225,10 +225,8 @@ def updateUsuario():
             indicacion = f"UPDATE ikea.usuarios SET idUsuarios = '{user}', nombre = '{nombre}', apellido = '{apellido}', segundoApellido = '{segundoApellido}', telefono = '{telefono}', idioma = '{idioma}', correoElectronico = '{correo}', contrasenna = '{contra}', direccion = '{direccion}' where idUsuarios = '{user}';"
             cursor.execute(indicacion)
             connection.commit()
+
             getAllUsuarios()
 
     finally:
         pass
-
-
-getAllUsuarios()

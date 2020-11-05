@@ -233,6 +233,3 @@ def updateProducto():
 
     finally:
         pass
-
-
-deleteProducto()
