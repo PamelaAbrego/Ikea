@@ -1,0 +1,20 @@
+-MenuGeneral: El usuario escoge entre ser administrador o ser cliente.
+    -MenuAdministrador: El admininstrador decide que tabla administrar.
+        -MenuUsuarios.
+        -MenuProductos.
+        -MenuClases.
+        -MenuCategorias.
+        -MenuCarritos.
+        -MenuFacturas.
+        -MenuEntregas.
+        -MenuExistencias.
+        -MenuSucursales.
+        -MenuCiudades.
+        -MenuPaises.
+        **Cada menu de cada tabla incluye:
+            -Salir
+            -Ver todos los registros.
+            -Agregar registro.
+            -Actualizar registro.
+            -Eliminar registro.
+    -MenuCliente
