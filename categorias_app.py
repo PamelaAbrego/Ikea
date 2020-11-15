@@ -1,16 +1,12 @@
-from categorias_view import (
-    connection,
-    getAllCategorias,
-    addNewCategoria,
-    updateCategoria,
-    deleteCategoria,
-)
+from categorias_view import tablaCategorias
+from bdCategorias import connection
 
 
 class MenuCategorias:
     def __init__(self):
+        print("Bienvenido a la tabla Categorías de Productos: ")
+        categorias = tablaCategorias()
         while True:
-            print("Bienvenido a la tabla Categorías de Productos")
             print("Menu: ")
             print("0 - Salir. ")
             print("1 - Obtener todas las categorías.")
@@ -24,10 +20,10 @@ class MenuCategorias:
                 connection.close()
                 break
             if option == 1:
-                getAllCategorias()
+                categorias = tablaCategorias()
             if option == 2:
-                addNewCategoria()
+                categorias.addNewCategoria()
             if option == 3:
-                updateCategoria()
+                categorias.updateCategoria()
             if option == 4:
-                deleteCategoria()
+                categorias.deleteCategoria()

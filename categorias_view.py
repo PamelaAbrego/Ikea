@@ -9,43 +9,44 @@ from bdCategorias import (
 )
 
 
-def getAllCategorias():
-    result = getCategoriaBD()
+class tablaCategorias:
+    def __init__(self):
+        self.getAllCategorias()
 
-    table = PrettyTable()
-    table.field_names = ["Id", "Nombre"]
+    def getAllCategorias(self):
+        result = getCategoriaBD()
 
-    for categoria in result:
-        table.add_row([categoria["idCategoriasProductos"], categoria["nombre"]])
-    print(table)
-    table.clear()
+        table = PrettyTable()
+        table.field_names = ["Id", "Nombre"]
 
+        for categoria in result:
+            table.add_row([categoria["idCategoriasProductos"], categoria["nombre"]])
+        print(table)
+        table.clear()
 
-def addNewCategoria():
-    print("Se está añadiendo una nueva categoría:")
-    nombre = input("Nombre: ")
-    insertCategoriaBD(nombre)
-    getAllCategorias()
+    def addNewCategoria(self):
+        print("Se está añadiendo una nueva categoría:")
+        nombre = input("Nombre: ")
+        insertCategoriaBD(nombre)
+        self.getAllCategorias()
 
+    def updateCategoria(self):
+        print("Se está actualizando la información de una categoría: ")
+        id = int(input("Id de la categoría a actualizar: "))
+        categoria = searchCategoriaById(id)
 
-def updateCategoria():
-    print("Se está actualizando la información de una categoría: ")
-    id = int(input("Id de la categoría a actualizar: "))
-    categoria = searchCategoriaById(id)
+        update = int(input("¿Desea actualizar el nombre? 0.No, 1.Sí: "))
+        if update == 1:
+            print(f"Nombre anterior: {categoria['nombre']}")
+            nombre = input("Nuevo nombre: ")
+        else:
+            nombre = categoria["nombre"]
 
-    update = int(input("¿Desea actualizar el nombre? 0.No, 1.Sí: "))
-    if update == 1:
-        print(f"Nombre anterior: {categoria['nombre']}")
-        nombre = input("Nuevo nombre: ")
-    else:
-        nombre = categoria["nombre"]
+        updateCategoriaBD(nombre, id)
+        self.getAllCategorias()
 
-    updateCategoriaBD(nombre, id)
-    getAllCategorias()
-
-
-def deleteCategoria():
-    print("Se está eliminando una categoría: ")
-    id = int(input("Id de la categoría a eliminar: "))
-    deleteCategoriaBD(id)
-    getAllCategorias()
+    def deleteCategoria(self):
+        print("Se está eliminando una categoría: ")
+        id = int(input("Id de la categoría a eliminar: "))
+        deleteCategoriaBD(id)
+        self.getAllCategorias()

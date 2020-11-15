@@ -1,14 +1,11 @@
-from usuarios_view import (
-    connection,
-    getAllUsuarios,
-    addNewUsuario,
-    updateUsuario,
-    deleteUsuario,
-)
+from usuarios_view import tablaUsuarios
+from bdUsuarios import connection
 
 
 class MenuUsuarios:
     def __init__(self):
+        print("Bienvenido a la tabla Usuarios")
+        usuario = tablaUsuarios()
         while True:
             print("Bienvenido a la tabla Usuarios")
             print("Menu: ")
@@ -24,10 +21,10 @@ class MenuUsuarios:
                 connection.close()
                 break
             if option == 1:
-                getAllUsuarios()
+                usuario.getAllUsuarios()
             if option == 2:
-                addNewUsuario()
+                usuario.addNewUsuario()
             if option == 3:
-                updateUsuario()
+                usuario.updateUsuario()
             if option == 4:
-                deleteUsuario()
+                usuario.deleteUsuario()

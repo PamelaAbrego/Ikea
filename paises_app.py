@@ -1,16 +1,12 @@
-from paises_view import (
-    connection,
-    getAllPaises,
-    addNewPais,
-    updatePais,
-    deletePais,
-)
+from paises_view import tablaPaises
+from bdPaises import connection
 
 
 class MenuPaises:
     def __init__(self):
+        print("Bienvenido a la tabla Países:")
+        paises = tablaPaises()
         while True:
-            print("Bienvenido a la tabla Países")
             print("Menu: ")
             print("0 - Salir. ")
             print("1 - Obtener todos los países.")
@@ -24,10 +20,10 @@ class MenuPaises:
                 connection.close()
                 break
             if option == 1:
-                getAllPaises()
+                paises = tablaPaises()
             if option == 2:
-                addNewPais()
+                paises.addNewPais()
             if option == 3:
-                updatePais()
+                paises.updatePais()
             if option == 4:
-                deletePais()
+                paises.deletePais()

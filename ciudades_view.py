@@ -7,6 +7,7 @@ from bdCiudades import (
     updateCiudadBD,
     deleteCiudadBD,
 )
+from paises_view import tablaPaises
 
 
 def getAllCiudades():
@@ -36,6 +37,8 @@ def getAllCiudades():
 def addNewCiudad():
     print("Se está añadiendo una nueva ciudad: ")
     nombre = input("Nombre: ")
+    print("--Tabla Países--")
+    tablaPaises()
     idPais = input("Id del país: ")
     insertCiudadBD(nombre, idPais)
     getAllCiudades()
@@ -55,6 +58,8 @@ def updateCiudad():
 
     update = int(input("¿Desea actualizar el Id del país? 0.No, 1.Sí: "))
     if update == 1:
+        print("--Tabla Países--")
+        tablaPaises()
         print(f"Id anterior: {ciudad['idPaises']}")
         idPais = input("Nuevo Id: ")
     else:

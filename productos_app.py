@@ -1,16 +1,12 @@
-from productos_view import (
-    connection,
-    getAllProductos,
-    addNewProducto,
-    updateProducto,
-    deleteProducto,
-)
+from productos_view import tablaProductos
+from productos_view import connection
 
 
 class MenuProductos:
     def __init__(self):
+        print("Bienvenido a la tabla Productos: ")
+        productos = tablaProductos()
         while True:
-            print("Bienvenido a la tabla Productos")
             print("Menu: ")
             print("0 - Salir. ")
             print("1 - Obtener todos los productos.")
@@ -24,10 +20,10 @@ class MenuProductos:
                 connection.close()
                 break
             if option == 1:
-                getAllProductos()
+                productos.getAllProductos()
             if option == 2:
-                addNewProducto()
+                productos.addNewProducto()
             if option == 3:
-                updateProducto()
+                productos.updateProducto()
             if option == 4:
-                deleteProducto()
+                productos.deleteProducto()

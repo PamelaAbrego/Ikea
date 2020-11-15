@@ -7,151 +7,159 @@ from bdProductos import (
     updateProductoBD,
     deleteProductoBD,
 )
+from clases_view import tablaClase
 
 
-def getAllProductos():
-    result = getProductoBD()
+class tablaProductos:
+    def __init__(self):
+        self.getAllProductos()
 
-    table = PrettyTable()
-    table.field_names = [
-        "Id",
-        "Nombre",
-        "Precio",
-        "Dimensiones",
-        "Materiales",
-        "Colores Disponibles",
-        "Descripción",
-        "Garantía",
-        "IdClaseProducto",
-    ]
+    def getAllProductos(self):
+        result = getProductoBD()
 
-    for producto in result:
-        table.add_row(
-            [
-                producto["idProductos"],
-                producto["nombre"],
-                producto["precio"],
-                producto["dimensiones"],
-                producto["materiales"],
-                producto["coloresDisponibles"],
-                producto["descripcion"],
-                producto["garantia"],
-                producto["idClaseProductos"],
-            ]
+        table = PrettyTable()
+        table.field_names = [
+            "Id",
+            "Nombre",
+            "Precio",
+            "Dimensiones",
+            "Materiales",
+            "Colores Disponibles",
+            "Descripción",
+            "Garantía",
+            "IdClaseProducto",
+            "Nombre Clase Producto",
+        ]
+
+        for producto in result:
+            table.add_row(
+                [
+                    producto["idProductos"],
+                    producto["nombre"],
+                    producto["precio"],
+                    producto["dimensiones"],
+                    producto["materiales"],
+                    producto["coloresDisponibles"],
+                    producto["descripcion"],
+                    producto["garantia"],
+                    producto["idClaseProductos"],
+                    producto["nombreClaseProductos"],
+                ]
+            )
+        print(table)
+        table.clear()
+
+    def addNewProducto(self):
+        print("Se está añadiendo un nuevo Producto:")
+        nombre = input("Nombre: ")
+        precio = input("Precio: ")
+        dimensiones = input("Dimensiones: ")
+        materiales = input("Materiales: ")
+        coloresDisponibles = input("Colores disponibles: ")
+        descripcion = input("Descripción: ")
+        garantia = input("Garantía: ")
+        print("--Tabla Clases de Productos--")
+        tablaClase()
+        idClaseProductos = input("IdClaseProductos: ")
+
+        insertProductoBD(
+            nombre,
+            precio,
+            dimensiones,
+            materiales,
+            coloresDisponibles,
+            descripcion,
+            garantia,
+            idClaseProductos,
         )
-    print(table)
-    table.clear()
+        self.getAllProductos()
 
+    def updateProducto(self):
+        print("Se está actualizando la información de un Producto: ")
+        id = int(input("Id del Producto a actualizar: "))
+        producto = searchProductoById(id)
 
-def addNewProducto():
-    print("Se está añadiendo un nuevo Producto:")
-    nombre = input("Nombre: ")
-    precio = input("Precio: ")
-    dimensiones = input("Dimensiones: ")
-    materiales = input("Materiales: ")
-    coloresDisponibles = input("Colores disponibles: ")
-    descripcion = input("Descripción: ")
-    garantia = input("Garantía: ")
-    idClaseProductos = input("IdClaseProductos: ")
+        option = int(input("¿Desea actualizar el nombre? 0.No, 1.Sí: "))
+        if option == 1:
+            print(f"Nombre anterior: {producto['nombre']}")
+            nombre = input("Nuevo nombre: ")
 
-    insertProductoBD(
-        nombre,
-        precio,
-        dimensiones,
-        materiales,
-        coloresDisponibles,
-        descripcion,
-        garantia,
-        idClaseProductos,
-    )
-    getAllProductos()
+        else:
+            nombre = producto["nombre"]
 
+        option = int(input("¿Desea actualizar el precio? 0.No, 1.Sí: "))
+        if option == 1:
+            print(f"Precio anterior: {producto['precio']}")
+            precio = input("Nuevo precio: ")
 
-def updateProducto():
-    print("Se está actualizando la información de un Producto: ")
-    id = int(input("Id del Producto a actualizar: "))
-    producto = searchProductoById(id)
+        else:
+            precio = producto["precio"]
 
-    option = int(input("¿Desea actualizar el nombre? 0.No, 1.Sí: "))
-    if option == 1:
-        print(f"Nombre anterior: {producto['nombre']}")
-        nombre = input("Nuevo nombre: ")
+        option = int(input("¿Desea actualizar las dimensiones? 0.No, 1.Sí: "))
+        if option == 1:
+            print(f"Dimensiones anteriores: {producto['dimensiones']}")
+            dimensiones = input("Nuevas dimensiones: ")
 
-    else:
-        nombre = producto["nombre"]
+        else:
+            dimensiones = producto["dimensiones"]
 
-    option = int(input("¿Desea actualizar el precio? 0.No, 1.Sí: "))
-    if option == 1:
-        print(f"Precio anterior: {producto['precio']}")
-        precio = input("Nuevo precio: ")
+        option = int(input("¿Desea actualizar los materiales? 0.No, 1.Sí: "))
+        if option == 1:
+            print(f"Materiales anteriores: {producto['materiales']}")
+            materiales = input("Nuevos materiales: ")
 
-    else:
-        precio = producto["precio"]
+        else:
+            materiales = producto["materiales"]
 
-    option = int(input("¿Desea actualizar las dimensiones? 0.No, 1.Sí: "))
-    if option == 1:
-        print(f"Dimensiones anteriores: {producto['dimensiones']}")
-        dimensiones = input("Nuevas dimensiones: ")
+        option = int(input("¿Desea actualizar los colores disponibles? 0.No, 1.Sí: "))
+        if option == 1:
+            print(f"Colores disponibles anteriores: {producto['coloresDisponibles']}")
+            coloresDisponibles = input("Nuevos colores disponibles: ")
 
-    else:
-        dimensiones = producto["dimensiones"]
+        else:
+            coloresDisponibles = producto["coloresDisponibles"]
 
-    option = int(input("¿Desea actualizar los materiales? 0.No, 1.Sí: "))
-    if option == 1:
-        print(f"Materiales anteriores: {producto['materiales']}")
-        materiales = input("Nuevos materiales: ")
+        option = int(input("¿Desea actualizar la descripción? 0.No, 1.Sí: "))
+        if option == 1:
+            print(f"Descripción anterior: {producto['descripcion']}")
+            descripcion = input("Nueva descrpción: ")
 
-    else:
-        materiales = producto["materiales"]
+        else:
+            descripcion = producto["descripcion"]
 
-    option = int(input("¿Desea actualizar los colores disponibles? 0.No, 1.Sí: "))
-    if option == 1:
-        print(f"Colores disponibles anteriores: {producto['coloresDisponibles']}")
-        coloresDisponibles = input("Nuevos colores disponibles: ")
+        option = int(input("¿Desea actualizar la garantía? 0.No, 1.Sí: "))
+        if option == 1:
+            print(f"Garantía anterior: {producto['garantia']}")
+            garantia = input("Nueva garantía: ")
 
-    else:
-        coloresDisponibles = producto["coloresDisponibles"]
+        else:
+            garantia = producto["garantia"]
 
-    option = int(input("¿Desea actualizar la descripción? 0.No, 1.Sí: "))
-    if option == 1:
-        print(f"Descripción anterior: {producto['descripcion']}")
-        descripcion = input("Nueva descrpción: ")
+        option = int(input("¿Desea actualizar el IdClaseProducto? 0.No, 1.Sí: "))
+        if option == 1:
+            print("--Tabla Clases de Productos--")
+            tablaClase()
+            print(f"IdClaseProducto anterior: {producto['idClaseProductos']}")
+            idClaseProducto = input("Nuevo IdClaseProducto: ")
 
-    else:
-        descripcion = producto["descripcion"]
+        else:
+            idClaseProducto = producto["idClaseProductos"]
 
-    option = int(input("¿Desea actualizar la garantía? 0.No, 1.Sí: "))
-    if option == 1:
-        print(f"Garantía anterior: {producto['garantia']}")
-        garantia = input("Nueva garantía: ")
+        updateProductoBD(
+            nombre,
+            precio,
+            dimensiones,
+            materiales,
+            coloresDisponibles,
+            descripcion,
+            garantia,
+            idClaseProducto,
+            id,
+        )
+        self.getAllProductos()
 
-    else:
-        garantia = producto["garantia"]
-
-    option = int(input("¿Desea actualizar el IdClaseProducto? 0.No, 1.Sí: "))
-    if option == 1:
-        print(f"IdClaseProducto anterior: {producto['idClaseProductos']}")
-        idClaseProducto = input("Nuevo IdClaseProducto: ")
-
-    else:
-        idClaseProducto = producto["idClaseProductos"]
-
-    updateProductoBD(
-        nombre,
-        precio,
-        dimensiones,
-        materiales,
-        coloresDisponibles,
-        descripcion,
-        garantia,
-        idClaseProducto,
-        id,
-    )
-    getAllProductos()
-
-
-def deleteProducto():
-    print("Se está eliminando un Producto: ")
-    id = int(input("Id del producto a eliminar: "))
-    deleteProductoBD(id)
-    getAllProductos()
+    def deleteProducto(self):
+        print("Se está eliminando un Producto: ")
+        id = int(input("Id del producto a eliminar: "))
+        deleteProductoBD(id)
+        self.getAllProductos()

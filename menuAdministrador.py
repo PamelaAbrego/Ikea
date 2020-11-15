@@ -5,6 +5,8 @@ from entregas_app import MenuEntregas
 from paises_app import MenuPaises
 from productos_app import MenuProductos
 from usuarios_app import MenuUsuarios
+from existencias_app import MenuExistencias
+from facturas_app import Menufacturas
 
 
 class MenuAdministrador:
@@ -51,7 +53,9 @@ class MenuAdministrador:
                 # Menú Carrito de Compras
                 pass
             if option == 6:
-                # Menú Facturas
+                print("------------------------------------------")
+                Menufacturas()
+                print("------------------------------------------")
                 pass
             if option == 7:
                 print("------------------------------------------")
@@ -59,7 +63,9 @@ class MenuAdministrador:
                 print("------------------------------------------")
                 pass
             if option == 8:
-                # Menú Existencias
+                print("------------------------------------------")
+                MenuExistencias()
+                print("------------------------------------------")
                 pass
             if option == 9:
                 # Menú Sucursales

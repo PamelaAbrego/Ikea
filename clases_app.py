@@ -1,14 +1,11 @@
-from clases_view import (
-    connection,
-    getAllClases,
-    addNewClase,
-    updateClase,
-    deleteClase,
-)
+from clases_view import tablaClase
+from bdClases import connection
 
 
 class MenuClases:
     def __init__(self):
+        print("Bienvenido a la tabla Clases de Productos")
+        productos = tablaClase()
         while True:
             print("Bienvenido a la tabla Clases de Productos")
             print("Menu: ")
@@ -24,10 +21,10 @@ class MenuClases:
                 connection.close()
                 break
             if option == 1:
-                getAllClases()
+                productos = tablaClase()
             if option == 2:
-                addNewClase()
+                productos.addNewClase()
             if option == 3:
-                updateClase()
+                productos.updateClase()
             if option == 4:
-                deleteClase()
+                productos.deleteClase()

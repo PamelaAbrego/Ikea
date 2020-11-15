@@ -1,14 +1,11 @@
-from entregas_view import (
-    connection,
-    getAllEntregas,
-    addNewEntrega,
-    updateEntrega,
-    deleteEntrega,
-)
+from entregas_view import tablaEntregas
+from bdEntregas import connection
 
 
 class MenuEntregas:
     def __init__(self):
+        print("Bienvenido a la tabla Entregas")
+        entregas = tablaEntregas()
         while True:
             print("Bienvenido a la tabla Entregas")
             print("Menu: ")
@@ -24,10 +21,10 @@ class MenuEntregas:
                 connection.close()
                 break
             if option == 1:
-                getAllEntregas()
+                entregas.getAllEntregas()
             if option == 2:
-                addNewEntrega()
+                entregas.addNewEntrega()
             if option == 3:
-                updateEntrega()
+                entregas.updateEntrega()
             if option == 4:
-                deleteEntrega()
+                entregas.deleteEntrega()
