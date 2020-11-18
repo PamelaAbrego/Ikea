@@ -48,30 +48,71 @@ class tablaUsuarios:
         print(table)
         table.clear()
 
-    def addNewUsuario(self):
-        print("Se está añadiendo un nuevo Usuario:")
-        nombreUsuario = input("Usuario: ")
-        nombre = input("Nombre: ")
-        apellido = input("Apellido: ")
-        segundoApellido = input("Segundo Apellido: ")
-        telefono = input("Teléfono: ")
-        idioma = input("Idioma: ")
-        correoElectronico = input("Correo Electrónico: ")
-        contrasenna = input("Contraseña: ")
-        direccion = input("Dirección: ")
+        def addUsuario(self):
+            print("Crearás un nuevo Usuario")
+            name = input("Nombre: ")
+            apellido = input("Apellido: ")
+            segundoApellido = input("Segundo apellido: ")
+            username = input("Usuario: ")
+            telefono = input("Número de teléfono: ")
+            idioma = input("Idioma: ")
+            correoElectronico = input("Correo electrónico: ")
+            contrasenna = input("Contraseña: ")
+            contrasenna2 = input("Confirma tu contraseña: ")
+            direccion = input("Dirección: ")
+            Existe = False
+            users = []
+            usuarios = []
 
-        insertUsuarioBD(
-            nombreUsuario,
-            nombre,
-            apellido,
-            segundoApellido,
-            telefono,
-            idioma,
-            correoElectronico,
-            contrasenna,
-            direccion,
-        )
-        self.getAllUsuarios()
+            if contrasenna == contrasenna2:
+                try:
+                    with connection.cursor() as cursor:
+                        sql = f"select nombreUsuario from ikea.Usuarios;"
+                        cursor.execute(sql)
+                        users = cursor.fetchall()
+                        for user in users:
+                            usuarios.append(user["nombreUsuario"])
+
+                        Existe = username in usuarios
+
+                        if Existe is True:
+                            print(" ")
+                            print("---------------------------------------------------")
+                            print(" ")
+                            print(
+                                "Este nombre de usuario ya está registrado, vuelve a intentarlo"
+                            )
+                            print(" ")
+                            print("---------------------------------------------------")
+                            print(" ")
+                            addUsuario()
+
+                        else:
+                            print(" ")
+                            print("---------------------------------------------------")
+                            print(" ")
+                            BuscarProducto()
+                            sql = f"""insert into ikea.usuarios (nombreUsuario, nombre, apellido, segundoApellido, telefono,
+                            idioma, correoElectronico, contrasenna, direccion) values ('{username}','{name}','{apellido}',
+                            '{segundoApellido}','{telefono}','{idioma}','{correoElectronico}','{contrasenna}', '{direccion}');"""
+                            cursor.execute(sql)
+                            connection.commit()
+                            print(" ")
+                            print("---------------------------------------------------")
+                            print(" ")
+
+                finally:
+                    pass
+
+            else:
+                print(" ")
+                print("---------------------------------------------------")
+                print(" ")
+                print("Las contraseñas ingresadas no corresponden, vuelve a intentarlo")
+                print(" ")
+                print("---------------------------------------------------")
+                print(" ")
+                addUsuario()
 
     def updateUsuario(self):
         print("Se está actualizando la información de un Usuario: ")

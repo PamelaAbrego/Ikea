@@ -1,4 +1,6 @@
 from menuAdministrador import MenuAdministrador
+from menuClientes import MenuClientes
+from menuRegistro import MenuRegistro
 
 while True:
     print("Bienvenido a IKEA")
@@ -21,5 +23,5 @@ while True:
         print("------------------------------------------")
     if option == 2:
         print("------------------------------------------")
-        pass
+        MenuRegistro()
         print("------------------------------------------")
