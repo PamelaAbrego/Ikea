@@ -1,16 +1,11 @@
-from ciudades_view import (
-    connection,
-    getAllCiudades,
-    addNewCiudad,
-    updateCiudad,
-    deleteCiudad,
-)
+from ciudades_view import TablaCiudades
 
 
 class MenuCiudades:
     def __init__(self):
+        print("Bienvenido a la tabla Ciudades")
+        ciudades = TablaCiudades()
         while True:
-            print("Bienvenido a la tabla Ciudades")
             print("Menu: ")
             print("0 - Salir. ")
             print("1 - Obtener todas las ciudades.")
@@ -21,13 +16,12 @@ class MenuCiudades:
 
             if option == 0:
                 print("Saliendo del menú de Ciudades.")
-                connection.close()
                 break
             if option == 1:
-                getAllCiudades()
+                ciudades.getAllCiudades()
             if option == 2:
-                addNewCiudad()
+                ciudades.addNewCiudad()
             if option == 3:
-                updateCiudad()
+                ciudades.updateCiudad()
             if option == 4:
-                deleteCiudad()
+                ciudades.deleteCiudad()

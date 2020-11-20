@@ -32,6 +32,7 @@ class tablaCategorias:
 
     def updateCategoria(self):
         print("Se está actualizando la información de una categoría: ")
+        self.getAllCategorias()
         id = int(input("Id de la categoría a actualizar: "))
         categoria = searchCategoriaById(id)
 
@@ -45,8 +46,10 @@ class tablaCategorias:
         updateCategoriaBD(nombre, id)
         self.getAllCategorias()
 
-    def deleteCategoria(self):
-        print("Se está eliminando una categoría: ")
-        id = int(input("Id de la categoría a eliminar: "))
-        deleteCategoriaBD(id)
-        self.getAllCategorias()
+
+def deleteCategoria(self):
+    print("Se está eliminando una categoría: ")
+    self.getAllCategorias()
+    id = int(input("Id de la categoría a eliminar: "))
+    deleteCategoriaBD(id)
+    self.getAllCategorias()

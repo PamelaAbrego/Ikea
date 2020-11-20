@@ -1,5 +1,4 @@
 from paises_view import tablaPaises
-from bdPaises import connection
 
 
 class MenuPaises:
@@ -17,7 +16,6 @@ class MenuPaises:
 
             if option == 0:
                 print("Saliendo del menú de Países")
-                connection.close()
                 break
             if option == 1:
                 paises = tablaPaises()

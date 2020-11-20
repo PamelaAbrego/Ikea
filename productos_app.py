@@ -1,5 +1,4 @@
 from productos_view import tablaProductos
-from productos_view import connection
 
 
 class MenuProductos:
@@ -17,7 +16,6 @@ class MenuProductos:
 
             if option == 0:
                 print("Saliendo del menú de Productos")
-                connection.close()
                 break
             if option == 1:
                 productos.getAllProductos()

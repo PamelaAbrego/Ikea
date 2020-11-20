@@ -17,4 +17,8 @@
             -Agregar registro.
             -Actualizar registro.
             -Eliminar registro.
-    -MenuCliente
+    -MenuCliente: 
+        -Debe completar un registro:
+            -Con cuenta existente
+            -Con cuenta nueva
+        -Pasa al menuClientes

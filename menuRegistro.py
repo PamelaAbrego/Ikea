@@ -1,5 +1,5 @@
-from registro import Registro
-from usuarios_view import tablaUsuarios
+from registroCuentaExistente import RegistroCuentaExistente
+from registroNuevaCuenta import RegistroNuevaCuenta
 from menuClientes import MenuClientes
 
 
@@ -22,14 +22,12 @@ class MenuRegistro:
             if option == 1:
                 print("------------------------------------------")
                 print("--Ingreso con cuenta existente--")
-                Registro()
+                RegistroCuentaExistente()
                 MenuClientes()
                 print("------------------------------------------")
             if option == 2:
-                usuarios = tablaUsuarios()
-
                 print("------------------------------------------")
                 print("--Creación de una nueva cuenta--")
-                usuarios.addUsuario()
+                RegistroNuevaCuenta()
                 MenuClientes()
                 print("------------------------------------------")

@@ -32,6 +32,7 @@ class tablaPaises:
 
     def updatePais(self):
         print("Se está actualizando la información de un país: ")
+        self.getAllPaises()
         id = int(input("Id del país a actualizar: "))
         pais = searchPaisById(id)
 
@@ -47,6 +48,7 @@ class tablaPaises:
 
     def deletePais(self):
         print("Se está eliminando un país: ")
+        self.getAllPaises()
         id = int(input("Id del país a eliminar: "))
         deletePaisBD(id)
         self.getAllPaises()

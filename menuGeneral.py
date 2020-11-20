@@ -2,9 +2,10 @@ from menuAdministrador import MenuAdministrador
 from menuClientes import MenuClientes
 from menuRegistro import MenuRegistro
 
+print("----------------------------")
+print("Bienvenido a IKEA")
+print("----------------------------")
 while True:
-    print("Bienvenido a IKEA")
-    print("----------------------------")
     print("Menú:")
     print("0 - Salir. ")
     print("1 - Ingresar como Administrador.")

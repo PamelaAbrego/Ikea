@@ -63,6 +63,7 @@ class tablaFacturas:
 
     def updateFactura(self):
         print("Se está actualizando la información de una Factura : ")
+        self.getAllFacturas()
         id = int(input("Id de la factura a actualizar: "))
         factura = searchFacturasById(id)
 
@@ -124,6 +125,7 @@ class tablaFacturas:
 
     def deleteFactura(self):
         print("Se está eliminando una Factura: ")
+        self.getAllFacturas()
         id = int(input("Id de la factura a eliminar: "))
         deleteFacturasBD(id)
         self.getAllFacturas()

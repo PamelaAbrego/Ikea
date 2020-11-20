@@ -43,6 +43,7 @@ class tablaEntregas:
 
     def updateEntrega(self):
         print("Se está actualizando la información de una entrega: ")
+        self.getAllEntregas()
         id = int(input("Id de la entrega a actualizar: "))
         entrega = searchEntregaById(id)
 
@@ -78,6 +79,7 @@ class tablaEntregas:
 
     def deleteEntrega(self):
         print("Se está eliminando una entrega: ")
+        self.getAllEntregas()
         id = int(input("Id de la entrega a eliminar: "))
         deleteEntregaBD(id)
         self.getAllEntregas()

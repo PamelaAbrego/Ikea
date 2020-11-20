@@ -1,5 +1,4 @@
 from existencias_view import tablaExistencias
-from bdExistencias import connection
 
 
 class MenuExistencias:
@@ -17,7 +16,6 @@ class MenuExistencias:
 
             if option == 0:
                 print("Saliendo del menú de Existencias.")
-                connection.close()
                 break
             if option == 1:
                 existencias.getAllExistencias()

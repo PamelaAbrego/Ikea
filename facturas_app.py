@@ -1,5 +1,4 @@
 from facturas_view import tablaFacturas
-from bdFacturas import connection
 
 
 class Menufacturas:
@@ -17,7 +16,6 @@ class Menufacturas:
 
             if option == 0:
                 print("Saliendo del menú de Facturas")
-                connection.close()
                 break
             if option == 1:
                 facturas.getAllFacturas()

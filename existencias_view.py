@@ -56,6 +56,7 @@ class tablaExistencias:
 
     def updateExistencia(self):
         print("Se está actualizando la información de una existencia: ")
+        self.getAllExistencias()
         idExistencia = int(input("Id de la existencia a actualizar: "))
         existencia = searchExistenciaById(idExistencia)
 
@@ -87,6 +88,7 @@ class tablaExistencias:
 
     def deleteExistencia(self):
         print("Se está eliminando una existencia: ")
+        self.getAllExistencias()
         idExistencia = int(input("Id de la existencia a eliminar: "))
         deleteExistenciaBD(idExistencia)
         self.getAllExistencias()

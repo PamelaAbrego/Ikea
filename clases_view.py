@@ -48,6 +48,7 @@ class tablaClase:
 
     def updateClase(self):
         print("Se está actualizando la información de una clase: ")
+        self.getAllClases()
         idClase = int(input("Id de la clase a actualizar: "))
         clase = searchClaseById(idClase)
 
@@ -72,6 +73,7 @@ class tablaClase:
 
     def deleteClase(self):
         print("Se está eliminando una clase: ")
+        self.getAllClases()
         idClase = int(input("Id de la clase a eliminar: "))
         deleteClaseBD(idClase)
         self.getAllClases()

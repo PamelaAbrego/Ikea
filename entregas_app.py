@@ -1,5 +1,4 @@
 from entregas_view import tablaEntregas
-from bdEntregas import connection
 
 
 class MenuEntregas:
@@ -7,7 +6,6 @@ class MenuEntregas:
         print("Bienvenido a la tabla Entregas")
         entregas = tablaEntregas()
         while True:
-            print("Bienvenido a la tabla Entregas")
             print("Menu: ")
             print("0 - Salir. ")
             print("1 - Obtener todas las entregas.")
@@ -18,7 +16,6 @@ class MenuEntregas:
 
             if option == 0:
                 print("Saliendo del menú de Entregas")
-                connection.close()
                 break
             if option == 1:
                 entregas.getAllEntregas()

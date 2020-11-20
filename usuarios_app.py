@@ -1,5 +1,4 @@
 from usuarios_view import tablaUsuarios
-from bdUsuarios import connection
 
 
 class MenuUsuarios:
@@ -7,7 +6,6 @@ class MenuUsuarios:
         print("Bienvenido a la tabla Usuarios")
         usuario = tablaUsuarios()
         while True:
-            print("Bienvenido a la tabla Usuarios")
             print("Menu: ")
             print("0 - Salir. ")
             print("1 - Obtener todos los usuarios.")
@@ -18,7 +16,6 @@ class MenuUsuarios:
 
             if option == 0:
                 print("Saliendo del menú de Usuarios")
-                connection.close()
                 break
             if option == 1:
                 usuario.getAllUsuarios()

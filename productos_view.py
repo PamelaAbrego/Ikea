@@ -76,6 +76,7 @@ class tablaProductos:
 
     def updateProducto(self):
         print("Se está actualizando la información de un Producto: ")
+        self.getAllProductos()
         id = int(input("Id del Producto a actualizar: "))
         producto = searchProductoById(id)
 
@@ -160,6 +161,7 @@ class tablaProductos:
 
     def deleteProducto(self):
         print("Se está eliminando un Producto: ")
+        self.getAllProductos()
         id = int(input("Id del producto a eliminar: "))
         deleteProductoBD(id)
         self.getAllProductos()

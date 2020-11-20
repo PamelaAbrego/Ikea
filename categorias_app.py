@@ -1,5 +1,4 @@
 from categorias_view import tablaCategorias
-from bdCategorias import connection
 
 
 class MenuCategorias:
@@ -17,10 +16,9 @@ class MenuCategorias:
 
             if option == 0:
                 print("Saliendo del menú de Categorías de Productos")
-                connection.close()
                 break
             if option == 1:
-                categorias = tablaCategorias()
+                categorias.getAllCategorias()
             if option == 2:
                 categorias.addNewCategoria()
             if option == 3:
